@@ -1,0 +1,5 @@
+<h1>Upcoming Pick-Up Games</h1>
+
+<% for event in @events %>
+    <p><a href="/events/<%= event[:id] %>"><%= event[:sport] %> | <%= event[:date] %>, <%= event[:start_time] %>  | @<%= event[:location] %></a></p>
+<% end %>
