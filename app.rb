@@ -85,6 +85,10 @@ get "/logout" do
     view "logout"
 end
 
+get "/new_event_sure" do
+    view "new_event_sure"
+end
+
 get "/new_event" do
     view "new_event"
 end
