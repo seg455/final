@@ -14,10 +14,10 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
 users_table = DB.from(:users)
+
 
 before do
     @current_user = users_table.where(id: session["user_id"]).to_a[0]
@@ -49,7 +49,20 @@ get "/events/:id/rsvps/create" do
                        user_id: session["user_id"],
                        going: params["going"],
                        comments: params["comments"])
-       redirect "/events/#{@event[:id]}"
+
+
+#account_sid = ENV["TWILIO_SID"]
+#account_sid = ""
+#auth_token = "ef3b7c80eeefed340ac17b3b04159b48"
+#client = Twilio::REST::Client.new(account_sid, auth_token)
+
+#client.messages.create(
+ #from: "+18458394112", 
+ #to: "+13128601168",
+ #body: "Thanks for signing up for a Pick-up! Check back in prior to gameday to make sure we have #'s"
+#)
+
+redirect "/events/#{@event[:id]}"
 end
 
 
