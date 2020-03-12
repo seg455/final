@@ -49,8 +49,22 @@ get "/events/:id/rsvps/create" do
                        user_id: session["user_id"],
                        going: params["going"],
                        comments: params["comments"])
-    view "create_rsvp"
+       redirect "/events/#{@event[:id]}"
 end
+
+
+# delete the rsvp (aka "destroy")
+get "/rsvps/:id/destroy" do
+    puts "params: #{params}"
+
+    rsvp = rsvps_table.where(id: params["id"]).to_a[0]
+    @event = events_table.where(id: rsvp[:event_id]).to_a[0]
+
+    rsvps_table.where(id: params["id"]).delete
+
+    redirect "/events/#{@event[:id]}"
+end
+
 
 get "/users/new" do
     view "new_user"
