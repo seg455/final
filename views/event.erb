@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4 div">
-        <h2></h2>
-        <h1>Pick-Up <%= @event[:sport] %></h1>
+        <h1></h1>
+        <h5>Pick-Up <%= @event[:sport] %></h1>
         <p><%= @event[:description] %></p>
         <% for rsvp in @rsvps %>
             <div class="media">
@@ -28,15 +28,15 @@
             <% if @current_user %>
                 <a href="/events/<%= @event[:id] %>/rsvps/new" class="btn btn-primary btn-lg">I'm In!</a>
             <% else %>
-                <a href="/logins/new" class="btn btn-danger">Please sign in to RSVP</a>
-                <a href="/users/new" class="btn btn-danger">New User? Sign Up!</a>
+                <a href="/logins/new" class="btn btn-warning">Please sign in to RSVP</a>
+                <p href="/users/new" class="btn btn-secondary">New User? Sign Up!</p>
             <% end %>
         </p>
     </div>
 
     <div class="col-sm-4 deets">
-        <h2></h2>
-        <h1>Game Details</h1>
+        <h1></h1>
+        <h5>Game Details</h5>
         <h3>When?</h3>
         <p><%= @event[:date] %></p>
         <h3>Where?</h3>
@@ -55,8 +55,8 @@
         </p>
     </div>
     <div class="container col-sm-4">
-      <h2></h2>
-      <h1>Map</h1>
+      <h1></h1>
+      <h5>Map</h5>
       <iframe
         width="400"
         height="400"

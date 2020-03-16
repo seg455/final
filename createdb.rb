@@ -34,7 +34,7 @@ end
 events_table = DB.from(:events)
 
 events_table.insert(sport: "Basketball", 
-                    description: "XYZ!",
+                    description: "Let's get a run going!",
                     date: "June 21",
                     start_time: "3 pm",
                     location: "SPAC",
@@ -42,17 +42,25 @@ events_table.insert(sport: "Basketball",
                     min_players:8)
 
 events_table.insert(sport: "Volleyball", 
-                    description: "XYZ",
+                    description: "Looking for 6 for VB",
                     date: "July 4",
                     start_time: "6 pm",
                     location: "E2",
                     exact_address: "1890 Maple Ave, Evanston, IL 60201",
                     min_players:6)
 
-events_table.insert(sport: "Volleyball", 
-                    description: "XYZ",
+events_table.insert(sport: "Basketball", 
+                    description: "Will reserve the court when we get 6 players",
                     date: "July 4",
                     start_time: "6 pm",
                     location: "E2",
                     exact_address: "1890 Maple Ave, Evanston, IL 60201",
+                    min_players:6)
+
+events_table.insert(sport: "Tennis", 
+                    description: "Court reserved for 4",
+                    date: "July 29",
+                    start_time: "4 pm",
+                    location: "SPAC",
+                    exact_address: "2311 Campus Dr, Evanston, IL 60208",
                     min_players:6)
