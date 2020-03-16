@@ -13,6 +13,7 @@ use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: 'secret'     
 before { puts; puts "--------------- NEW REQUEST ---------------"; puts }             #
 after { puts; }                                                                       #
 #######################################################################################
+require "geocoder"
 
 events_table = DB.from(:events)
 rsvps_table = DB.from(:rsvps)
@@ -28,17 +29,16 @@ get "/" do
     @events = events_table.all.to_a
     view "events"
 end
+                            
 
 get "/events/:id" do
     @event = events_table.where(id: params[:id]).to_a[0]
     @rsvps = rsvps_table.where(event_id: @event[:id])
     @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
     @users_table = users_table
-    @exact_address = @event[:exact_address]
-    results = Geocoder.search(params["@exact_address"])
-    lat_long = results.first.coordinates # => [lat, long]
-    @lat_long = "#{lat_long[0]} #{lat_long[1]}"
+    @exact_address= @event[:exact_address]
 
+    results = Geocoder.search(@exact_address)
     view "event"
 end
 
@@ -135,3 +135,9 @@ post "/create_event" do
                     min_players: params["min_players"])
     view "created_event"
 end
+
+
+
+def view(template); erb template.to_sym; end
+before { puts "Parameters: #{params}" }                                     
+
