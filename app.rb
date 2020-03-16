@@ -34,6 +34,11 @@ get "/events/:id" do
     @rsvps = rsvps_table.where(event_id: @event[:id])
     @going_count = rsvps_table.where(event_id: @event[:id], going: true).count
     @users_table = users_table
+    @exact_address = @event[:exact_address]
+    results = Geocoder.search(params["@exact_address"])
+    lat_long = results.first.coordinates # => [lat, long]
+    @lat_long = "#{lat_long[0]} #{lat_long[1]}"
+
     view "event"
 end
 
@@ -51,15 +56,15 @@ get "/events/:id/rsvps/create" do
                        comments: params["comments"])
 
 
-account_sid = ENV["TWILIO_SID"]
-auth_token = ENV["TW_AUTH"]
-client = Twilio::REST::Client.new(account_sid, auth_token)
+#account_sid = ENV["TWILIO_SID"]
+#auth_token = ENV["TW_AUTH"]
+#client = Twilio::REST::Client.new(account_sid, auth_token)
 
-client.messages.create(
- from: "+18458394112", 
- to: "+13128601168",
- body: "Thanks for signing up for a Pick-up! Check back in prior to gameday to make sure we have #'s"
-)
+#client.messages.create(
+ #from: "+18458394112", 
+ #to: "+13128601168",
+ #body: "Thanks for signing up for a Pick-up! Check back in prior to gameday to make sure we have #'s"
+#)
 
 redirect "/events/#{@event[:id]}"
 end
