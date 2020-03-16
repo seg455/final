@@ -59,9 +59,9 @@ events_table.insert(sport: "Basketball",
                     min_players:6)
 
 events_table.insert(sport: "Tennis", 
-                    description: "Court reserved for 4",
+                    description: "Court reserved",
                     date: "July 29",
                     start_time: "4 pm",
                     location: "SPAC",
                     exact_address: "2311 Campus Dr, Evanston, IL 60208",
-                    min_players:6)
+                    min_players:4)
