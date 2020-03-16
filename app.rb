@@ -56,15 +56,15 @@ get "/events/:id/rsvps/create" do
                        comments: params["comments"])
 
 
-#account_sid = ENV["TWILIO_SID"]
-#auth_token = ENV["TW_AUTH"]
-#client = Twilio::REST::Client.new(account_sid, auth_token)
+account_sid = ENV["TWILIO_SID"]
+auth_token = ENV["TW_AUTH"]
+client = Twilio::REST::Client.new(account_sid, auth_token)
 
-#client.messages.create(
- #from: "+18458394112", 
- #to: "+13128601168",
- #body: "Thanks for signing up for a Pick-up! Check back in prior to gameday to make sure we have #'s"
-#)
+client.messages.create(
+ from: "+18458394112", 
+ to: "+13128601168",
+ body: "Thanks for signing up for a Pick-up! Check back in prior to gameday to make sure we have #'s"
+)
 
 redirect "/events/#{@event[:id]}"
 end

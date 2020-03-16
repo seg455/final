@@ -29,7 +29,8 @@
                 <a href="/events/<%= @event[:id] %>/rsvps/new" class="btn btn-primary btn-lg">I'm In!</a>
             <% else %>
                 <a href="/logins/new" class="btn btn-warning">Please sign in to RSVP</a>
-                <p href="/users/new" class="btn btn-secondary">New User? Sign Up!</p>
+                <p></p>
+                <a href="/users/new" class="btn btn-secondary">New User? Sign Up!</a>
             <% end %>
         </p>
     </div>
@@ -54,6 +55,7 @@
             <% end %>
         </p>
     </div>
+    
     <div class="container col-sm-4">
       <h1></h1>
       <h5>Map</h5>
@@ -64,7 +66,6 @@
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
           &q=<%= @exact_address%>&zoom=16" allowfullscreen>
       </iframe>
-     
     </div>
 
 </div>
