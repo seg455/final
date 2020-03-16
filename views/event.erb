@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-4 div">
+        <h2></h2>
         <h1>Pick-Up <%= @event[:sport] %></h1>
         <p><%= @event[:description] %></p>
         <% for rsvp in @rsvps %>
@@ -25,21 +26,24 @@
         <% end %>
         <p class="mt-5">
             <% if @current_user %>
-                <a href="/events/<%= @event[:id] %>/rsvps/new" class="btn btn-primary">RSVP now!</a>
+                <a href="/events/<%= @event[:id] %>/rsvps/new" class="btn btn-primary btn-lg">I'm In!</a>
             <% else %>
                 <a href="/logins/new" class="btn btn-danger">Please sign in to RSVP</a>
                 <a href="/users/new" class="btn btn-danger">New User? Sign Up!</a>
             <% end %>
         </p>
     </div>
-    <div class="col-sm-4">
+
+    <div class="col-sm-4 deets">
+        <h2></h2>
+        <h1>Game Details</h1>
         <h3>When?</h3>
         <p><%= @event[:date] %></p>
         <h3>Where?</h3>
         <p><%= @event[:location] %></p>
-        <h3>Minimum players needed?</h3>
+        <h3>Min players needed?</h3>
         <p><%= @event[:min_players] %></p>
-        <h3># players so far?</h3>
+        <h3># Players so far?</h3>
         <p><%= @going_count %></p>
         <h3>Game on?</h3>
         <p>
@@ -50,16 +54,19 @@
             <% end %>
         </p>
     </div>
-</div>
-
-<div class="container mt-5">
+    <div class="container col-sm-4">
+      <h2></h2>
       <h1>Map</h1>
       <iframe
-        width="600"
-        height="450"
+        width="400"
+        height="400"
         frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
           &q=<%= @exact_address%>&zoom=16" allowfullscreen>
       </iframe>
      
     </div>
+
+</div>
+
+
