@@ -1,10 +1,6 @@
 <div class="row">
-    <div class="col-sm-9">
-        <h2>
-            <i class="far fa-calendar-alt"></i>
-            <%= @event[:date] %>
-        </h2>
-        <h1><%= @event[:sport] %></h1>
+    <div class="col-sm-8">
+        <h1>Pick-Up <%= @event[:sport] %></h1>
         <p><%= @event[:description] %></p>
         <% for rsvp in @rsvps %>
             <div class="media">
@@ -32,15 +28,26 @@
                 <a href="/events/<%= @event[:id] %>/rsvps/new" class="btn btn-primary">RSVP now!</a>
             <% else %>
                 <a href="/logins/new" class="btn btn-danger">Please sign in to RSVP</a>
+                <a href="/users/new" class="btn btn-danger">New User? Sign Up!</a>
             <% end %>
         </p>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <h3>When?</h3>
         <p><%= @event[:date] %></p>
         <h3>Where?</h3>
         <p><%= @event[:location] %></p>
-        <h3>How many guests so far?</h3>
+        <h3>Minimum players needed?</h3>
+        <p><%= @event[:min_players] %></p>
+        <h3># players so far?</h3>
         <p><%= @going_count %></p>
+        <h3>Game on?</h3>
+        <p>
+            <% if @going_count < @event[:min_players]%>
+                <a> Need a Few More!</a>
+            <% else %>
+                <a> Yes! See you there.</a>
+            <% end %>
+        </p>
     </div>
 </div>
